@@ -13,7 +13,6 @@
 }
 
 body {
-    height: 2000px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -155,7 +154,7 @@ i.fas.fa-user-circle {
     background-color: white;
     border: 1px solid white;
     border-radius: 4px;
-    height: 1800px;
+    height: 1100px;
     width: 500px;
     width: 100%;
     max-width: calc(100% - 36px - 36px);
