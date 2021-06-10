@@ -1,0 +1,183 @@
+:root {
+    --primary-colour: #3e707c;
+    --accent-colour: #00c4ba;
+    --light-blue: rgb(216, 231, 232);
+    --title-text-black: rgba(55, 55, 55, 0.75);
+    --table-light-grey: rgba(220, 224, 221, 0.75);
+    --table-lighter-grey: rgba(220, 224, 221, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    background-color: var(--light-blue);
+    height: 100%;
+}
+
+.bold-code {
+    font-weight: bold;
+}
+
+.top-banner {
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 84px;
+    background: linear-gradient(90deg, var(--primary-colour) 0%, var(--accent-colour) 100%);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.loading-spinner {
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.top-banner .logo {
+    height: 72px;
+}
+
+.user-area {
+    display: flex;
+    flex-direction: row;
+    flex-direction: start;
+    align-items: center;
+}
+
+.user-name {
+    color: white;
+}
+
+.avatar-wrapper {
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+i.fas.fa-user-circle {
+    font-size: 48px;
+}
+
+.lender-maintenance-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 500px;
+    width: 500px;
+    width: 100%;
+    max-width: calc(100% - 36px - 36px);
+    margin-top: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+h2.table-title {
+    color: var(--accent-colour);
+    padding: 0px 24px;
+}
+
+.divider {
+    height: 2px;
+    background-color: var(--light-blue);
+}
+
+.divider span {
+    visibility: hidden;
+}
+
+.lender-table {
+    width: 100%;
+}
+
+table {
+    color: var(--title-text-black);
+    width: 100%;
+    max-width: calc(100% - 40px - 40px);
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+table tr th {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    margin-right: 12px;
+    background-color: white;
+}
+
+.first-header th:nth-of-type(1) {
+    padding-left: 10px;
+}
+
+td {
+    font-size: 12px;
+}
+
+tr.table-row {
+    height: 40px;
+    border-top: 1px solid var(--table-light-grey);
+    border-bottom: 1px solid var(--table-light-grey);
+}
+
+.table-row td:nth-of-type(1) {
+    padding-left: 12px;
+}
+
+.commission-header {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-lighter-grey);
+}
+
+.first-header {
+    height: 30px;
+    margin-bottom: 8px;
+}
+
+.second-header th {
+    padding-bottom: 8px;
+}
+
+.balance-multiplier-header {
+    width: 80px;
+}

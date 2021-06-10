@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf 8">
+    <title>Lender Maintenance</title>
+    <link rel="stylesheet" href="./lender-page.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9829453259.js" crossorigin="anonymous"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+    <div class="container">
+        <div ng-show="isLoading" class="loading-spinner">
+            <img src="./assets/spinner.svg" alt="spinner">
+        </div>
+        <div class="top-banner">
+            <img class="logo" src="./assets/infynity_logo.png" alt="logos">
+            <div class="user-area">
+                <div class="avatar-wrapper">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <span class="user-name">Kevin Nguyen</span>
+            </div>
+
+        </div>
+        <div class="lender-maintenance-area">
+            <h2 class="table-title">Lender Maintenance</h2>
+            <div class="divider"><span>divider</span></div>
+            <table class="lender-table">
+                <tr class="first-header">
+                    <th>Bank Code</th>
+                    <th>Display Name</th>
+                    <th>Type</th>
+                    <th colspan="3" class="commission-header">Commission</th>
+                    <th class="balance-multiplier-header">Balance Multiplier</th>
+                    <th>Active</th>
+                    <th>Hide</th>
+                    <th>Edit</th>
+                </tr>
+                <tr class="second-header">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Upfront</th>
+                    <th>Trail High</th>
+                    <th>Trail Low</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="lender in lenders" class="table-row">
+                    <td class="bold-code">{{lender.code}}</td>
+                    <td>{{lender.name}}</td>
+                    <td>{{lender.type}}</td>
+                    <td>%{{lender.upfont_commission}}</td>
+                    <td>%{{lender.high_trail_commission}}</td>
+                    <td>%{{lender.low_trail_commission}}</td>
+                    <td>{{lender.balance_multiplier}}</td>
+                    <td><input type="checkbox" ng-checked="lender.is_active" disabled="true"></td>
+                    <td><input type="checkbox" ng-checked="lender.is_hidden" disabled="true"></td>
+                    <td>
+                        <i class="fas fa-pencil-alt"></i>
+                        <span>Edit</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="myApp.js"></script>
+    <script src="myCtrl.js"></script>
+</body>
+
+</html>
