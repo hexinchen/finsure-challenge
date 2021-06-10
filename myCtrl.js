@@ -22,7 +22,7 @@ app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
 
             }
         }, error => {
-            //todo
+            $scope.showErrorDialog(error);
         })
     }
 
@@ -59,6 +59,17 @@ app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
             $scope.isLoading = false;
             $scope.showConfirmToast();
 
+        });
+    };
+
+    $scope.showErrorDialog = function (error) {
+        var confirm = $mdDialog.confirm()
+            .title('Error!')
+            .textContent(`Error: ${error}, please try again.`)
+            .ok('Try Again')
+
+        $mdDialog.show(confirm).then(() => {
+            $scope.loadLenderData();
         });
     };
 
