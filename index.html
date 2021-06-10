@@ -63,18 +63,18 @@
 
 
                 <tr ng-repeat="lender in lenders" class="table-row">
-                    <td class="bold-code">{{lender.code}}</td>
-                    <td>{{lender.name}}</td>
-                    <td>{{lender.type}}</td>
-                    <td>%{{lender.upfont_commission}}</td>
-                    <td>%{{lender.high_trail_commission}}</td>
-                    <td>%{{lender.low_trail_commission}}</td>
-                    <td>{{lender.balance_multiplier}}</td>
-                    <td><input type="checkbox" ng-checked="lender.is_active" disabled="true"></td>
-                    <td><input type="checkbox" ng-checked="lender.is_hidden" disabled="true"></td>
-                    <td>
+                    <td class="bold-code">{{lender.attributes.code}}</td>
+                    <td>{{lender.attributes.name}}</td>
+                    <td>{{lender.attributes.type}}</td>
+                    <td>%{{lender.attributes.upfont_commission}}</td>
+                    <td>%{{lender.attributes.high_trail_commission}}</td>
+                    <td>%{{lender.attributes.low_trail_commission}}</td>
+                    <td>{{lender.attributes.balance_multiplier}}</td>
+                    <td><input type="checkbox" ng-checked="lender.attributes.is_active" disabled="true"></td>
+                    <td><input type="checkbox" ng-checked="lender.attributes.is_hidden" disabled="true"></td>
+                    <td ng-click="showEditDialog(lender)">
                         <i class="fas fa-pencil-alt"></i>
-                        <span ng-click="showPrompt($event)">Edit</span>
+                        <span class="edit-link">Edit</span>
                     </td>
                 </tr>
             </table>
