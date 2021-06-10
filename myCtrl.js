@@ -1,4 +1,4 @@
-app.controller("myCtrl", function ($scope, $http, $mdDialog) {
+app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
     $scope.lenders = [];
     $scope.hasError = false;
     $scope.errorMsg = '';
@@ -32,8 +32,17 @@ app.controller("myCtrl", function ($scope, $http, $mdDialog) {
             var targetLenderIndex = $scope.lenders.findIndex(l => l.id === lender.id);
             $scope.lenders[targetLenderIndex] = lender;
             $scope.isLoading = false;
+            $scope.showConfirmToast();
         });
     };
+
+    $scope.showConfirmToast = function () {
+        $mdToast.show(
+            $mdToast.simple()
+                .textContent('Your change has been saved!')
+                .position('top right')
+                .hideDelay(3000))
+    }
 
     function DialogController($scope, $mdDialog, data) {
         $scope.lender = angular.copy(data);
