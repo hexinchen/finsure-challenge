@@ -78,7 +78,7 @@
                     </td>
                 </tr>
             </table>
-            <div class="pagination">
+            <div class="pagination" ng-show="allLenders.length > PAGE_SIZE">
                 <a ng-show="currentPageIndex !== 0" href="#" ng-click="onPrev()">&laquo;</a>
                 <a ng-repeat="i in pageIndexList" href="#" ng-click="onPageChange(i)"
                     ng-class="{'active': i === currentPageIndex}">{{i + 1}}</a>
