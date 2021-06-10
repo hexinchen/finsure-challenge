@@ -8,11 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <script src="https://kit.fontawesome.com/9829453259.js" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
-    <script src="https://code.angularjs.org/1.6.9/angular.js"></script>
+
     <div class="container">
         <div ng-show="isLoading" class="loading-spinner">
             <img src="./assets/spinner.svg" alt="spinner">
@@ -31,6 +36,7 @@
             <h2 class="table-title">Lender Maintenance</h2>
             <div class="divider"><span>divider</span></div>
             <table class="lender-table">
+
                 <tr class="first-header">
                     <th>Bank Code</th>
                     <th>Display Name</th>
@@ -53,6 +59,9 @@
                     <th></th>
                     <th></th>
                 </tr>
+
+
+
                 <tr ng-repeat="lender in lenders" class="table-row">
                     <td class="bold-code">{{lender.code}}</td>
                     <td>{{lender.name}}</td>
@@ -65,7 +74,7 @@
                     <td><input type="checkbox" ng-checked="lender.is_hidden" disabled="true"></td>
                     <td>
                         <i class="fas fa-pencil-alt"></i>
-                        <span>Edit</span>
+                        <span ng-click="showPrompt($event)">Edit</span>
                     </td>
                 </tr>
             </table>
