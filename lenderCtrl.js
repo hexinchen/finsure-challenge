@@ -1,4 +1,4 @@
-app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
+app.controller("lenderCtrl", function ($scope, $http, $mdDialog, $mdToast) {
     $scope.allLenders = [];
     $scope.lendersResponse = null;
     $scope.hasError = false;
