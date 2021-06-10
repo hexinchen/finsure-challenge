@@ -62,7 +62,7 @@
 
 
 
-                <tr ng-repeat="lender in lenders" class="table-row">
+                <tr ng-repeat="lender in currentLenderBatch" class="table-row">
                     <td class="bold-code">{{lender.attributes.code}}</td>
                     <td>{{lender.attributes.name}}</td>
                     <td>{{lender.attributes.type}}</td>
@@ -78,6 +78,12 @@
                     </td>
                 </tr>
             </table>
+            <div class="pagination">
+                <a ng-show="currentPageIndex !== 0" href="#" ng-click="onPrev()">&laquo;</a>
+                <a ng-repeat="i in pageIndexList" href="#" ng-click="onPageChange(i)"
+                    ng-class="{'active': i === currentPageIndex}">{{i + 1}}</a>
+                <a ng-show="currentPageIndex+1 < pageIndexList.length" href="#" ng-click="onNext()">&raquo;</a>
+            </div>
         </div>
     </div>
 

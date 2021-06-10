@@ -1,22 +1,46 @@
 app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
-    $scope.lenders = [];
+    $scope.allLenders = [];
+    $scope.lendersResponse = null;
     $scope.hasError = false;
     $scope.errorMsg = '';
     $scope.isLoading = false;
+    $scope.PAGE_SIZE = 20;
+    $scope.currentPageIndex = 0;
+    $scope.currentLenderBatch = [];
+    $scope.pageIndexList = [];
+
 
     $scope.loadLenderData = function () {
         $scope.isLoading = true;
         $http.get("lenders.json").then(response => {
             $scope.isLoading = false;
             if (response.status === 200 && response.data && response.data.data) {
-                $scope.lenders = response.data.data;
+                $scope.lendersResponse = response.data;
+                $scope.allLenders = response.data.data;
+                $scope.initPagination();
+                $scope.pageIndexList = [...Array($scope.allLenders.length / $scope.PAGE_SIZE).keys()];
+
             }
         }, error => {
-            $scope.isLoading = false;
-            $scope.hasError = true;
-            $scope.errorMsg = error;
-        });
+            //todo
+        })
     }
+
+    $scope.onPageChange = function (index) {
+        $scope.currentPageIndex = index;
+        $scope.currentLenderBatch = $scope.allLenders.slice(index * $scope.PAGE_SIZE, index * $scope.PAGE_SIZE + $scope.PAGE_SIZE);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    }
+
+    $scope.onPrev = function () {
+        $scope.onPageChange($scope.currentPageIndex - 1);
+    }
+
+    $scope.onNext = function () {
+        $scope.onPageChange($scope.currentPageIndex + 1);
+    }
+
 
     $scope.showEditDialog = function (lender) {
         $mdDialog.show({
@@ -29,12 +53,20 @@ app.controller("myCtrl", function ($scope, $http, $mdDialog, $mdToast) {
             fullscreen: false
         }).then(function (lender) {
             $scope.isLoading = true;
-            var targetLenderIndex = $scope.lenders.findIndex(l => l.id === lender.id);
-            $scope.lenders[targetLenderIndex] = lender;
+            var targetLenderIndex = $scope.allLenders.findIndex(l => l.id === lender.id);
+            $scope.allLenders[targetLenderIndex] = lender;
+            $scope.initPagination();
             $scope.isLoading = false;
             $scope.showConfirmToast();
+
         });
     };
+
+    $scope.initPagination = function () {
+        $scope.currentPageIndex = 0;
+        $scope.currentLenderBatch = $scope.allLenders.slice(0, $scope.PAGE_SIZE);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     $scope.showConfirmToast = function () {
         $mdToast.show(
